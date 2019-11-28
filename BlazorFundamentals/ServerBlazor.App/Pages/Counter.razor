@@ -1,0 +1,41 @@
+﻿@page "/counter"
+@using Blazor.Fluxor
+@using ServerBlazor.Services
+@using ServerBlazor.Store.Counter
+@inject NavigationManager NavigationManager
+@inject VisitTrackingService VisitTrackingService
+@inherits Blazor.Fluxor.Components.FluxorComponent
+@inject IDispatcher Dispatcher
+@inject IState<CounterState> CounterState
+
+<h1>Counter</h1>
+
+<p>Current count: @CounterState.Value.CurrentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<button class="btn btn-warning" @onclick="MoveMeToHome">Let's go home</button>
+
+<ChildComponent>Hey I'm a child!</ChildComponent>
+
+@code {
+    
+    void MoveMeToHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+    void IncrementCount()
+    {
+        Dispatcher.Dispatch(new IncrementCounterAction());
+    }
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await VisitTrackingService.TrackVisitInLocal();
+            await VisitTrackingService.TrackVisitInSession();
+        }
+    }
+}

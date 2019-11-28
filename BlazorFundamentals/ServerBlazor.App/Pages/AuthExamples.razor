@@ -1,0 +1,48 @@
+﻿@page "/authtest"
+@inject IAuthorizationService AuthorizationService
+@attribute [Authorize]
+
+<h1>Authorization Examples</h1>
+
+<AuthorizeView>
+    <Authorized>
+        <h2>You can only see this if you're logged in</h2>
+    </Authorized>
+</AuthorizeView>
+
+<AuthorizeView Policy="IsAdmin">
+    <Authorized>
+        <h2>You can only see this if your email ends with @@admin</h2>
+    </Authorized>
+    <NotAuthorized>
+        <h2>Only Admins can see this.</h2>
+    </NotAuthorized>
+</AuthorizeView>
+
+<AuthorizeView Roles="SecretRole">
+    <Authorized>
+        <h2>You can only see this if are part of the SecretRole</h2>
+    </Authorized>
+</AuthorizeView>
+
+@code{
+
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthStateTask { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var state = await AuthStateTask;
+            var user = state.User;
+            var userIsAdmin = await AuthorizationService.AuthorizeAsync(user, "IsAdmin");
+
+            if (userIsAdmin.Succeeded)
+            {
+                Console.WriteLine("Hey you're an admin!");
+            }
+        }
+    }
+
+}

@@ -1,0 +1,46 @@
+﻿@page "/history"
+@using ServerBlazor.Data
+@using ServerBlazor.Services
+@inject VisitTrackingService VisitTrackingService
+
+<h1>Page visit history</h1>
+
+<div class="row">
+    <div class="col-6">
+        <h2>Session visits</h2>
+        <ul>
+            @foreach (var visit in _sessionVisits)
+            {
+                <li>Visited @visit.Url at @visit.DateTime</li>
+            }
+        </ul>
+    </div>
+    <div class="col-6">
+        <h2>Local visits</h2>
+        <ul>
+            @foreach (var visit in _localVisits)
+            {
+                <li>Visited @visit.Url at @visit.DateTime</li>
+            }
+        </ul>
+    </div>
+
+</div>
+
+
+@code{
+
+    private IEnumerable<PageVisit> _localVisits = new List<PageVisit>();
+    private IEnumerable<PageVisit> _sessionVisits = new List<PageVisit>();
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _localVisits = await VisitTrackingService.GetLocalVisitsAsync() ?? new List<PageVisit>();
+            _sessionVisits = await VisitTrackingService.GetSessionVisitsAsync() ??  new List<PageVisit>();
+            StateHasChanged();
+        }
+    }
+
+}

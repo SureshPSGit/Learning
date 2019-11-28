@@ -1,0 +1,67 @@
+﻿@using Blazor.Fluxor
+@using ServerBlazor.Store.Counter
+@inherits Blazor.Fluxor.Components.FluxorComponent
+@inject IState<CounterState> CounterState
+
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">ServerBlazor</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span> Counter (@CounterState.Value.CurrentCount)
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="fetchdata">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="showcase.me">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Showcase
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="interop">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> JS Interop
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="form-example">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Form example
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="authtest">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Auth Example
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="history">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> History
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    bool collapseNavMenu = true;
+
+    string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

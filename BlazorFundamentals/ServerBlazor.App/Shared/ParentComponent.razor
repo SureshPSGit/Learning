@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Components
+@using ServerBlazor.Services
+
+<div class="alert alert-success">
+@AlertText
+</div>
+
+<ChildComponent>This is a child</ChildComponent>
+
+@code
+{
+
+    [Parameter]
+    public string AlertText { get; set; }
+
+}

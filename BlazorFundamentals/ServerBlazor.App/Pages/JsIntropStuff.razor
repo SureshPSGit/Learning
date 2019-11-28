@@ -1,0 +1,64 @@
+﻿@page "/interop"
+@using Microsoft.AspNetCore.Components
+@using ServerBlazor.Helpers
+@inject IJSRuntime JsRuntime
+
+<h1>JS Interop</h1>
+
+<h3>Create alert</h3>
+
+<button class="btn btn-success" @onclick="ShowAlert">Show alert</button>
+<br/>
+
+<h3>Ask me a question</h3>
+
+<input @bind="questionText"/>
+
+<button class="btn btn-warning" @onclick="AskQuestion">Ask question</button>
+
+<div>
+The answer was: <span id="answerSpan"></span>
+</div>
+
+<h3>Please focus</h3>
+
+<input @ref="InputToFocus"/>
+
+<button class="btn btn-danger" @onclick="Focus">Focus!</button>
+
+<h3>Give me random int</h3>
+
+<div>
+The random number is: <span id="randomNumberSpan"></span>
+</div>
+
+<button class="btn btn-info" @onclick="GenerateRandom">Randomize!</button>
+
+@code
+{
+    string questionText = string.Empty;
+    ElementReference InputToFocus;
+
+    async Task Focus()
+    {
+        await JsRuntime.InvokeVoidAsync("focusOnElement", InputToFocus);
+    }
+    
+    async Task AskQuestion()
+    {
+        var response = await JsRuntime.InvokeAsync<string>("createPrompt",
+            questionText);
+        await JsRuntime.InvokeVoidAsync("setElementTextById", "answerSpan", response);
+    }
+    
+    async Task ShowAlert()
+    {
+        await JsRuntime.InvokeVoidAsync("createAlert");
+    }
+
+    async Task GenerateRandom()
+    {
+        await JsRuntime.InvokeVoidAsync("giveMeRandomInt", 100,
+            DotNetObjectReference.Create(new RandomHelper()));
+    }
+}

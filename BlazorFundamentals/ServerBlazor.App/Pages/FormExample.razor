@@ -1,0 +1,73 @@
+﻿@page "/form-example"
+@using System.Text.Json
+@using ServerBlazor.Data
+@using ServerBlazor.Services
+@inject IJSRuntime JsRuntime
+@inject VisitTrackingService VisitTrackingService
+
+<h1>Forms and Validation</h1>
+
+<div>
+<span id="resultJson"></span>
+</div>
+
+<EditForm Model="@jobApplication" OnValidSubmit="@SubmitJobApplication">
+<DataAnnotationsValidator/>
+<ValidationSummary/>
+
+<p>
+    <label for="fullname">Fullname: </label>
+    <InputText id="fullname" @bind-Value="jobApplication.Fullname" 
+        @oninput="@(EventCallback.Factory.CreateBinder<string>(this,
+                      newValue => Task.FromResult(TypeCheck(newValue)), string.Empty))" />
+    <ValidationMessage For="@(() => jobApplication.Fullname)" />
+</p>
+<p>
+    <label for="desc">Description: </label>
+    <InputTextArea id="desc" @bind-Value="jobApplication.Description" />
+</p>
+
+<p>
+    <label for="salary">Salary Expectation: </label>
+    <InputNumber id="salary" @bind-Value="jobApplication.SalaryExpectation" />
+</p>
+
+<p>
+    <label for="opensource">Are you doing Open Source? </label>
+    <InputCheckbox id="opensource" @bind-Value="jobApplication.DoesOpenSource" />
+</p>
+
+<p>
+    <label for="availability">Interview Availability </label>
+    <InputDate id="availability" @bind-Value="jobApplication.Availability" />
+</p>
+
+<button type="submit">Submit</button>
+
+</EditForm>
+
+@code
+{
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await VisitTrackingService.TrackVisitInLocal();
+            await VisitTrackingService.TrackVisitInSession();
+        }
+    }
+
+    private JobApplication jobApplication = new JobApplication();
+
+    private async Task TypeCheck(string currentValue)
+    {
+        await JsRuntime.InvokeVoidAsync("setElementTextById", "resultJson",
+            $"Current value is: {currentValue}");
+    }
+
+    private async Task SubmitJobApplication()
+    {
+        await JsRuntime.InvokeVoidAsync("setElementTextById", "resultJson",
+            JsonSerializer.Serialize(jobApplication));
+    }
+}
