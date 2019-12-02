@@ -1,8 +1,15 @@
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using ExampleMediatR.Extensions;
 using ExampleMediatR.Mapping;
 using ExampleMediatR.Repositories;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -43,6 +50,8 @@ namespace ExampleMediatR
 
             app.UseAuthorization();
 
+            app.UseFluentValidationExceptionHandler();
+            
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
