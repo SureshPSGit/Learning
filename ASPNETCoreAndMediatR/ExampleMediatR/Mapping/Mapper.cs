@@ -7,6 +7,8 @@ using ExampleMediatR.Responses;
 
 namespace ExampleMediatR.Mapping
 {
+    // This mapper has non-mapping logic in it
+    // It's a bad mapper. Don't use this bad mapper
     public class Mapper : IMapper
     {
         private readonly ICustomersRepository _customersRepository;

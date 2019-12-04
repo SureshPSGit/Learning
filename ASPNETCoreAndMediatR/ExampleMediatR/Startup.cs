@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using ExampleMediatR.Extensions;
 using ExampleMediatR.Mapping;
+using ExampleMediatR.PipelineBehaviors;
 using ExampleMediatR.Repositories;
 using FluentValidation;
 using MediatR;
@@ -34,6 +35,8 @@ namespace ExampleMediatR
             services.AddSingleton<IOrdersRepository, OrdersRepository>();
             services.AddSingleton<IMapper, Mapper>();
             services.AddMediatR(typeof(Startup));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
