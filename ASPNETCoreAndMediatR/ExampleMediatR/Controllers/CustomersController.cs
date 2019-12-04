@@ -14,17 +14,10 @@ namespace ExampleMediatR.Controllers
     [Route("[controller]")]
     public class CustomersController : ControllerBase
     {
-        private readonly ICustomersRepository _customersRepository;
-        private readonly IOrdersRepository _ordersRepository;
-        private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public CustomersController(ICustomersRepository customersRepository,
-            IOrdersRepository ordersRepository, IMapper mapper, IMediator mediator)
+        public CustomersController(IMediator mediator)
         {
-            _customersRepository = customersRepository;
-            _ordersRepository = ordersRepository;
-            _mapper = mapper;
             _mediator = mediator;
         }
         
