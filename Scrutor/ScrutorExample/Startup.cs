@@ -9,6 +9,7 @@ using ScrutorExample.Extensions;
 using ScrutorExample.Mapping;
 using ScrutorExample.PipelineBehaviors;
 using ScrutorExample.Repositories;
+using ScrutorExample.Repositories.Cached;
 using ScrutorExample.Services;
 
 namespace ScrutorExample
@@ -28,6 +29,8 @@ namespace ScrutorExample
             services.AddControllers();
 
             services.AddSingleton<ICustomersRepository, CustomersRepository>();
+            services.Decorate<ICustomersRepository, CachedCustomersRepository>();
+            
             services.AddSingleton<IOrdersRepository, OrdersRepository>();
             
             services.AddSingleton<IMapper, Mapper>();

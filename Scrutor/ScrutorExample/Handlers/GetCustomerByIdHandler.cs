@@ -11,7 +11,7 @@ namespace ScrutorExample.Handlers
     public class GetCustomerByIdHandler : IRequestHandler<GetCustomerByIdQuery, CustomerResponse>
     {
         private readonly IMapper _mapper;
-        private readonly ICustomersRepository _customersRepository;
+        private readonly ICustomersRepository _customersRepository; //CachedCustomersRepository
     
         public GetCustomerByIdHandler(IMapper mapper, ICustomersRepository customersRepository)
         {

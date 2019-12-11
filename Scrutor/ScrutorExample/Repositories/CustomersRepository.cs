@@ -19,10 +19,5 @@ namespace ScrutorExample.Repositories
         {
             return Task.FromResult(_customers.SingleOrDefault(x => x.Id == customerId));
         }
-
-        public Task<List<CustomerDto>> GetCustomersAsync()
-        {
-            return Task.FromResult(_customers);
-        }
     }
 }

@@ -17,14 +17,6 @@ namespace ScrutorExample.Controllers
             _mediator = mediator;
         }
         
-        [HttpGet("")]
-        public async Task<IActionResult> GetCustomers()
-        {
-            var query = new GetAllCustomersQuery();
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-
         [HttpGet("{customerId}")]
         public async Task<IActionResult> GetCustomer(Guid customerId)
         {
