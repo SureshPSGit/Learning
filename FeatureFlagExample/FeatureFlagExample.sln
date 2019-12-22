@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureFlagExample", "FeatureFlagExample.csproj", "{02022101-D597-45EE-AE00-D34FBDE6C661}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02022101-D597-45EE-AE00-D34FBDE6C661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02022101-D597-45EE-AE00-D34FBDE6C661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02022101-D597-45EE-AE00-D34FBDE6C661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02022101-D597-45EE-AE00-D34FBDE6C661}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
