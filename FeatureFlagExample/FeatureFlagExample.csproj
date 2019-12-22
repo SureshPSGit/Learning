@@ -1,8 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.FeatureManagement" Version="2.0.0-preview-010610001-1263" />
+      <PackageReference Include="Microsoft.FeatureManagement.AspNetCore" Version="2.0.0-preview-010610001-1263" />
+    </ItemGroup>
 
 
 </Project>
