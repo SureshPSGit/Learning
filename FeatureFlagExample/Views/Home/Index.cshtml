@@ -7,10 +7,25 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+    
+    <feature name="HolidayFlag">
+        <h2>Happy holidays!</h2>    
+    </feature>
+
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     
     
     <feature name="NewFeatureFlag" requirement="All">
         <a asp-action="NewFeature">Go to the new feature</a>
     </feature>
+    
+    <feature name="BrowserFlag">
+        <h2>You can only see this on Edge</h2>    
+    </feature>
+    
+    <feature name="RandomFlag">
+        <h3>You will see this half the time</h3>
+    </feature>
+    
+    <div class="small">@DateTime.UtcNow.ToString("O")</div>
 </div>
