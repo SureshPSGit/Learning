@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tweetbook.Sdk.Sample", "Twe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tweetbook.Contracts", "Tweetbook.Contracts\Tweetbook.Contracts.csproj", "{8F3D5027-B216-4477-9165-A6D85129C89B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tweetbook.Web", "Tweetbook.Web\Tweetbook.Web.csproj", "{74894B88-7530-430F-BB73-36ED7570DC81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8F3D5027-B216-4477-9165-A6D85129C89B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F3D5027-B216-4477-9165-A6D85129C89B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F3D5027-B216-4477-9165-A6D85129C89B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74894B88-7530-430F-BB73-36ED7570DC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74894B88-7530-430F-BB73-36ED7570DC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74894B88-7530-430F-BB73-36ED7570DC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74894B88-7530-430F-BB73-36ED7570DC81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
