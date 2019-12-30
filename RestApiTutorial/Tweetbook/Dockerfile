@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:3.0-sdk as build
+FROM microsoft/dotnet:3.1-sdk as build
 
 ARG BUILDCONFIG=RELEASE
 ARG VERSION=1.0.0
@@ -11,7 +11,7 @@ COPY . ./build/
 WORKDIR /build/
 RUN dotnet publish ./Tweetbook.csproj -c $BUILDCONFIG -o out /p:Version=$VERSION
 
-FROM microsoft/dotnet:3.0-aspnetcore-runtime
+FROM microsoft/dotnet:3.1-aspnetcore-runtime
 WORKDIR /app
 
 COPY --from=build /build/out .
