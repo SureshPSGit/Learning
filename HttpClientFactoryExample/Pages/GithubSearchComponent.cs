@@ -11,18 +11,12 @@ namespace HttpClientFactoryExample.Pages
   
         protected string AccountInfo { get; set; }
 
+        [Inject]
+        public IHttpClientFactory HttpClientFactory { get; set; }
+
         public async Task LoadAccount()
         {
-            var httpClient = new HttpClient
-            {
-                BaseAddress = new Uri("https://api.github.com/"),
-                DefaultRequestHeaders =
-                {
-                    {"Accept", "application/vnd.github.v3+json"},
-                    {"User-Agent", "HttpClientFactoryExample"}
-                }
-            };
-
+            var httpClient = HttpClientFactory.CreateClient("GitHub");
             AccountInfo = await httpClient.GetStringAsync($"users/{AccountName}");
         }
     }
