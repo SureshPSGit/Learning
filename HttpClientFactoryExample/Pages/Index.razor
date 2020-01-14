@@ -1,0 +1,19 @@
+﻿@page "/"
+@inherits GithubSearchComponent
+
+<h1>GitHub account information</h1>
+
+<label for="basic-url">Load GitHub account information</label>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">https://api.github.com/users/</span>
+  </div>
+  <input type="text" class="form-control" @bind="@AccountName" aria-describedby="basic-addon3">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary"  @onclick="LoadAccount" type="button">Load account info</button>
+  </div>
+</div>
+
+<code>
+@AccountInfo
+</code>
