@@ -3,6 +3,8 @@
 
 ## [Join our Slack community](https://slackinvite.azurewebsites.net/)
 
-Blazor fundamentals series: [Video](https://www.youtube.com/playlist?list=PLUOequmGnXxPrY79JGnF72e1Pba8z93zo) - [Source](https://github.com/Elfocrash/Youtube.Sources/tree/master/BlazorFundamentals)
+ASP.NET Core 3 REST API: [Code](https://github.com/Elfocrash/Youtube.Sources/tree/master/ASPNETCoreTutorials/RestApiTutorial) [Video](https://www.youtube.com/playlist?list=PLUOequmGnXxOgmSDWU7Tl6iQTsOtyjtwU)
 
-ASP.NET Core 3 REST API: [Video](https://www.youtube.com/playlist?list=PLUOequmGnXxOgmSDWU7Tl6iQTsOtyjtwU) - [Source](https://github.com/Elfocrash/Youtube.Sources/tree/master/RestApiTutorial)
+Blazor fundamentals series [Code](https://github.com/Elfocrash/Youtube.Sources/tree/master/BlazorTutorials/BlazorFundamentals) [Video](https://www.youtube.com/playlist?list=PLUOequmGnXxPrY79JGnF72e1Pba8z93zo)
+
+Clean ASP.NET Core API using MediatR and CQRS [Code](https://github.com/Elfocrash/Youtube.Sources/tree/master/ASPNETCoreTutorials/ASPNETCoreAndMediatR) [Video](https://youtu.be/YzOBrVlthMk)
