@@ -11,7 +11,7 @@ namespace PollyRetryTutorial.Services
     {
         private const int MaxRetries = 3;
         private readonly IHttpClientFactory _httpClientFactory;
-        private static readonly Random _random = new Random();
+        private static readonly Random Random = new Random();
         
         public GithubService(IHttpClientFactory httpClientFactory)
         {
@@ -28,7 +28,7 @@ namespace PollyRetryTutorial.Services
             {
                 try
                 {
-                    if(_random.Next(1,3) == 1)
+                    if(Random.Next(1,3) == 1)
                         throw new HttpRequestException("This is a fake request exception");
                     
                     var result = await client.GetAsync($"/users/{username}");
