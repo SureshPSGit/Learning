@@ -44,6 +44,10 @@ namespace PollyRetryTutorial.Services
                 catch(HttpRequestException exception)
                 {
                     retriesLeft--;
+                    if (retriesLeft == 0)
+                    {
+                        throw;
+                    }
                 }   
             }
 
