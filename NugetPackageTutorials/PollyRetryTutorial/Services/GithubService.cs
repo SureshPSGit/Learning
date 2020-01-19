@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Polly;
+using Polly.Retry;
 using PollyRetryTutorial.Contracts;
 
 namespace PollyRetryTutorial.Services
@@ -12,46 +15,51 @@ namespace PollyRetryTutorial.Services
         private const int MaxRetries = 3;
         private readonly IHttpClientFactory _httpClientFactory;
         private static readonly Random Random = new Random();
+        private readonly AsyncRetryPolicy _retryPolicy;
         
         public GithubService(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            _retryPolicy = Policy.Handle<HttpRequestException>()
+                .WaitAndRetryAsync(MaxRetries, times => 
+                TimeSpan.FromMilliseconds(times * 100));
         }
         
         public async Task<GithubUser> GetUserByUsernameAsync(string username)
         {
             var client = _httpClientFactory.CreateClient("GitHub");
-            var retriesLeft = MaxRetries;
 
-            GithubUser githubUser = null;
-            while (retriesLeft > 0)
+            return await _retryPolicy.ExecuteAsync(async () =>
             {
-                try
+                if(Random.Next(1,3) == 1)
+                    throw new HttpRequestException("This is a fake request exception");
+                    
+                var result = await client.GetAsync($"/users/{username}");
+                if (result.StatusCode == HttpStatusCode.NotFound)
                 {
-                    if(Random.Next(1,3) == 1)
-                        throw new HttpRequestException("This is a fake request exception");
-                    
-                    var result = await client.GetAsync($"/users/{username}");
-                    if (result.StatusCode == HttpStatusCode.NotFound)
-                    {
-                        break;
-                    }
-                    
-                    var resultString = await result.Content.ReadAsStringAsync();
-                    githubUser = JsonConvert.DeserializeObject<GithubUser>(resultString);
-                    break;
+                    return null;
                 }
-                catch(HttpRequestException exception)
-                {
-                    retriesLeft--;
-                    if (retriesLeft == 0)
-                    {
-                        throw;
-                    }
-                }   
-            }
+                    
+                var resultString = await result.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<GithubUser>(resultString);
+            });
+        }
+        
+        public async Task<List<GithubUser>> GetUsersFromOrgAsync(string orgName)
+        {
+            var client = _httpClientFactory.CreateClient("GitHub");
 
-            return githubUser;
+            return await _retryPolicy.ExecuteAsync(async () =>
+            {
+                var result = await client.GetAsync($"/orgs/{orgName}");
+                if (result.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+                    
+                var resultString = await result.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<GithubUser>>(resultString);
+            });
         }
     }
 }
