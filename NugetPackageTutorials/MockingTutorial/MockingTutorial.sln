@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersApi", "MockingTutorial\CustomersApi\CustomersApi.csproj", "{38EE293F-A10B-4C51-9C19-E0EFEC5AA164}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersApi.Moq", "CustomersApi.Moq\CustomersApi.Moq.csproj", "{86F81C33-8439-4740-A16E-118DC7AE54A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{38EE293F-A10B-4C51-9C19-E0EFEC5AA164}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38EE293F-A10B-4C51-9C19-E0EFEC5AA164}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38EE293F-A10B-4C51-9C19-E0EFEC5AA164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86F81C33-8439-4740-A16E-118DC7AE54A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86F81C33-8439-4740-A16E-118DC7AE54A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86F81C33-8439-4740-A16E-118DC7AE54A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86F81C33-8439-4740-A16E-118DC7AE54A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

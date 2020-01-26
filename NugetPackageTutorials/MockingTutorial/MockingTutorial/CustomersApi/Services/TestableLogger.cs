@@ -6,7 +6,7 @@ namespace CustomersApi.Services
     {
         private readonly ILogger _logger;
 
-        public TestableLogger(ILogger logger)
+        public TestableLogger(ILogger<TestableLogger> logger)
         {
             _logger = logger;
         }

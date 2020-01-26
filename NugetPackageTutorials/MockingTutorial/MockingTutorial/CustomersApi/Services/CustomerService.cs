@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using CustomersApi.Domain;
 using CustomersApi.Dtos;
 using CustomersApi.Repositories;
-using Microsoft.Extensions.Logging;
 
 namespace CustomersApi.Services
 {
