@@ -12,9 +12,9 @@ namespace CustomersApi.Services
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _customerRepository;
-        private readonly ILogger _logger;
+        private readonly ILoggingService _logger;
 
-        public CustomerService(ICustomerRepository customerRepository, ILogger<CustomerService> logger)
+        public CustomerService(ICustomerRepository customerRepository, ILoggingService logger)
         {
             _customerRepository = customerRepository;
             _logger = logger;

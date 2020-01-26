@@ -23,6 +23,7 @@ namespace CustomersApi
         {
             services.AddLogging();
             services.AddControllers();
+            services.AddSingleton<ILoggingService, TestableLogger>();
             services.AddSingleton<IDbConnectionFactory>(x =>
                 new SqLiteConnectionFactory(Configuration.GetValue<string>("Database:DbLocation")));
             services.AddSingleton<ICustomerRepository, CustomerRepository>();
