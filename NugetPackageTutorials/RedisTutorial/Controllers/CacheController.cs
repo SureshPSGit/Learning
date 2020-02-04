@@ -22,10 +22,10 @@ namespace RedisTutorial.Controllers
         }
         
         [HttpPost("cache")]
-        public async Task<IActionResult> GetCacheValue([FromBody] NewCacheEntryRequest request)
+        public async Task<IActionResult> SetCacheValue([FromBody] NewCacheEntryRequest request)
         {
             await _cacheService.SetCacheValueAsync(request.Key, request.Value);
-            return CreatedAtAction("GetCacheValue", request.Value);
+            return Ok();
         }
     }
 }
