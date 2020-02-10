@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FluentAssertions;
 using Xunit;
 
 namespace FluentAssertionsTutorial
@@ -32,6 +33,26 @@ namespace FluentAssertionsTutorial
             Assert.Equal(expected, result);
             Assert.StartsWith("The result is: ", _sut.Text);
             Assert.EndsWith(result.ToString(), _sut.Text);
+        }
+        
+        [Theory]
+        [InlineData(13, 5, 8)]
+        [InlineData(0, -3, 3)]
+        [InlineData(0, 0, 0)]
+        public void Add_ShouldAddTwoNumbers_WhenTheAdditionIsValidFa(
+            decimal expected, decimal firstToAdd, decimal secondToAdd)
+        {
+            // Arrange
+            _sut.Add(firstToAdd);
+            _sut.Add(secondToAdd);
+            
+            // Act
+            var result = _sut.Value;
+            
+            // Assert
+            result.Should().Be(expected);
+            _sut.Text.Should().StartWith("The result is: ");
+            _sut.Text.Should().EndWith(result.ToString());
         }
 
         [Theory]
@@ -98,7 +119,21 @@ namespace FluentAssertionsTutorial
             Func<object> resultFunc = () => _sut.Divide(0);
 
             // Assert
-            Assert.Throws<DivideByZeroException>(resultFunc);
+            var exception = Assert.Throws<DivideByZeroException>(resultFunc);
+            Assert.Equal("Attempted to divide by zero.", exception.Message);
+        }
+        
+        [Fact]
+        public void Divide_ShouldThrowDivideByZeroException_WhenDividingWithZeroFa()
+        {
+            // Arrange
+            _sut.Divide(50);
+            
+            // Act
+            Func<object> resultFunc = () => _sut.Divide(0);
+
+            // Assert
+            resultFunc.Should().Throw<DivideByZeroException>().WithMessage("Attempted to divide by zero.");
         }
 
         public static IEnumerable<object[]> AddTestData()
