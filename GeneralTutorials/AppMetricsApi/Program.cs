@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using App.Metrics.AspNetCore;
+using App.Metrics.Formatters.Prometheus;
 using AppMetricsApi.Database;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +24,13 @@ namespace AppMetricsApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseMetricsWebTracking()
+                .UseMetrics(options => { options.EndpointOptions = endpointsOptions =>
+                {
+                    endpointsOptions.MetricsTextEndpointOutputFormatter = new MetricsPrometheusTextOutputFormatter();
+                    endpointsOptions.MetricsEndpointOutputFormatter = new MetricsPrometheusProtobufOutputFormatter();
+                    endpointsOptions.EnvironmentInfoEndpointEnabled = false;
+                }; })
                 .ConfigureLogging(logging =>
                 {
                     logging.ClearProviders();
