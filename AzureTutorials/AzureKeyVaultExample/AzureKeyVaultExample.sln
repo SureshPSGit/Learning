@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureKeyVaultExample", "AzureKeyVaultExample.csproj", "{FDE8AB2D-5633-4739-AE11-14F21697AC75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDE8AB2D-5633-4739-AE11-14F21697AC75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE8AB2D-5633-4739-AE11-14F21697AC75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE8AB2D-5633-4739-AE11-14F21697AC75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE8AB2D-5633-4739-AE11-14F21697AC75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
