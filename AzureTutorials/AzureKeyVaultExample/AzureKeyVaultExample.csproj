@@ -2,9 +2,11 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>461a4004-0943-41ef-8505-bb38df33f9ab</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cosmonaut" Version="2.11.3" />
     <PackageReference Include="Cosmonaut.Extensions.Microsoft.DependencyInjection" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="3.1.2" />
   </ItemGroup>
 </Project>
