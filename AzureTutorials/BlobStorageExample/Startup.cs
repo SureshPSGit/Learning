@@ -1,3 +1,5 @@
+using Azure.Storage.Blobs;
+using BlobStorageExample.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +21,11 @@ namespace BlobStorageExample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton(x =>
+                new BlobServiceClient(Configuration.GetValue<string>("AzureBlobStorageConnectionString")));
+
+            services.AddSingleton<IBlobService, BlobService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
