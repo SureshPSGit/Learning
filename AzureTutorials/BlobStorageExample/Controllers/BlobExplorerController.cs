@@ -22,16 +22,23 @@ namespace BlobStorageExample.Controllers
             return File(data.Content, data.ContentType);
         }
 
-        [HttpGet("")]
+        [HttpGet("list")]
         public async Task<IActionResult> ListBlobs()
         {
             return Ok(await _blobService.ListBlobsAsync());
         }
 
-        [HttpPost("")]
+        [HttpPost("uploadfile")]
         public async Task<IActionResult> UploadFile([FromBody] UploadFileRequest request)
         {
-            await _blobService.UploadBlobAsync(request.FilePath, request.FileName);
+            await _blobService.UploadFileBlobAsync(request.FilePath, request.FileName);
+            return Ok();
+        }
+        
+        [HttpPost("uploadcontent")]
+        public async Task<IActionResult> UploadContent([FromBody] UploadContentRequest request)
+        {
+            await _blobService.UploadContentBlobAsync(request.Content, request.FileName);
             return Ok();
         }
 
