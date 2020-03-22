@@ -30,5 +30,12 @@ namespace ServiceBus.Producer.Controllers
             await _messagePublisher.Publish(customer);
             return Ok();
         }
+        
+        [HttpPost("publish/customer")]
+        public async Task<IActionResult> PublishCustomer([FromBody] Order order)
+        {
+            await _messagePublisher.Publish(order);
+            return Ok();
+        }
     }
 }

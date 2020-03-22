@@ -4,7 +4,7 @@ namespace ServiceBus.Contracts
 {
     public class Customer
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public string FullName { get; set; }
 

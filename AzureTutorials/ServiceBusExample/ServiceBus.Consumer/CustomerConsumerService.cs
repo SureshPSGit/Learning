@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace ServiceBus.Consumer
 {
-    public class ServiceBusConsumerService : BackgroundService
+    public class CustomerConsumerService : BackgroundService
     {
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
