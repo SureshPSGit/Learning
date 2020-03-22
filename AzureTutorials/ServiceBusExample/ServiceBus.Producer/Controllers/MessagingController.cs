@@ -2,6 +2,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ServiceBus.Contracts;
+using ServiceBus.Producer.Requests;
 using ServiceBus.Producer.Services;
 
 namespace ServiceBus.Producer.Controllers
@@ -25,16 +26,29 @@ namespace ServiceBus.Producer.Controllers
         }
         
         [HttpPost("publish/customer")]
-        public async Task<IActionResult> PublishCustomer([FromBody] Customer customer)
+        public async Task<IActionResult> PublishCustomer([FromBody] CreateCustomerRequest request)
         {
-            await _messagePublisher.Publish(customer);
+            //_customerService.CreateCustomer(request);
+            var customerCreated = new CustomerCreated
+            {
+                Id = request.Id,
+                FullName = request.FullName,
+                DateOfBirth = request.DateOfBirth
+            };
+            await _messagePublisher.Publish(customerCreated);
             return Ok();
         }
         
-        [HttpPost("publish/customer")]
-        public async Task<IActionResult> PublishCustomer([FromBody] Order order)
+        [HttpPost("publish/order")]
+        public async Task<IActionResult> PublishOrder([FromBody] CreateOrderRequest request)
         {
-            await _messagePublisher.Publish(order);
+            //_orderService.CreateOrder(request);
+            var orderCreated = new OrderCreated
+            {
+                Id = request.Id,
+                ProductName = request.ProductName
+            };
+            await _messagePublisher.Publish(orderCreated);
             return Ok();
         }
     }

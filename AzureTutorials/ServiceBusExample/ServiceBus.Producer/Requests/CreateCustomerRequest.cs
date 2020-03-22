@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
-namespace ServiceBus.Contracts
+namespace ServiceBus.Producer.Requests
 {
-    public class Customer
+    public class CreateCustomerRequest
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 

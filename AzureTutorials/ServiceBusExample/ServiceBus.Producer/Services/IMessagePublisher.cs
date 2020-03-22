@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using ServiceBus.Contracts;
 
 namespace ServiceBus.Producer.Services
 {
