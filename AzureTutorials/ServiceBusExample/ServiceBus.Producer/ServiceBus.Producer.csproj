@@ -8,5 +8,9 @@
       <ProjectReference Include="..\ServiceBus.Contracts\ServiceBus.Contracts.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Azure.ServiceBus" Version="4.1.2" />
+    </ItemGroup>
+
 
 </Project>

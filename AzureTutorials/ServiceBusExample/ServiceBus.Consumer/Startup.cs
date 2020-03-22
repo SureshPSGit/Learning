@@ -1,15 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.ServiceBus;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace ServiceBus.Consumer
 {
@@ -26,6 +19,10 @@ namespace ServiceBus.Consumer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHostedService<CustomerConsumerService>();
+            services.AddSingleton<ISubscriptionClient>(x =>
+                new SubscriptionClient(Configuration.GetValue<string>("ServiceBus:ConnectionString"),
+                    Configuration.GetValue<string>("ServiceBus:TopicName"),
+                    Configuration.GetValue<string>("ServiceBus:SubscriptionName")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

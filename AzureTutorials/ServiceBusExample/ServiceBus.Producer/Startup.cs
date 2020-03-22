@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Azure.ServiceBus;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ServiceBus.Producer.Services;
 
 namespace ServiceBus.Producer
 {
@@ -19,6 +21,10 @@ namespace ServiceBus.Producer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<ITopicClient>(x =>
+                new TopicClient(Configuration.GetValue<string>("ServiceBus:ConnectionString"),
+                    Configuration.GetValue<string>("ServiceBus:TopicName")));
+            services.AddSingleton<IMessagePublisher, MessagePublisher>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
