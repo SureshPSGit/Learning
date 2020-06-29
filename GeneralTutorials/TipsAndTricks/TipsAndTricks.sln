@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnyCountAndLinq", "src\AnyC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalsVisibleForTests.Tests", "test\InternalsVisibleForTests.Tests\InternalsVisibleForTests.Tests.csproj", "{0601A3BD-40FE-40D6-97F0-1A0050CDE5AC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncActionsAreNotAwaited", "src\AsyncActionsAreNotAwaited\AsyncActionsAreNotAwaited.csproj", "{6649A829-84A2-4504-88F9-B766D18393B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,7 @@ Global
 		{0FB40D5B-0827-49BD-9E38-3243DC8AB051} = {77B6C1A9-D285-4568-BE65-52AD0661A77E}
 		{5F0E9C18-0ED1-4925-8C79-73AD9FB2317D} = {77B6C1A9-D285-4568-BE65-52AD0661A77E}
 		{0601A3BD-40FE-40D6-97F0-1A0050CDE5AC} = {FBB4A1FB-20C5-4B47-940F-E6DB0A9ECAD9}
+		{6649A829-84A2-4504-88F9-B766D18393B7} = {77B6C1A9-D285-4568-BE65-52AD0661A77E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9240E263-AD96-4345-849A-58D1BCA04DF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -47,5 +50,9 @@ Global
 		{0601A3BD-40FE-40D6-97F0-1A0050CDE5AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0601A3BD-40FE-40D6-97F0-1A0050CDE5AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0601A3BD-40FE-40D6-97F0-1A0050CDE5AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6649A829-84A2-4504-88F9-B766D18393B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6649A829-84A2-4504-88F9-B766D18393B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6649A829-84A2-4504-88F9-B766D18393B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6649A829-84A2-4504-88F9-B766D18393B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
