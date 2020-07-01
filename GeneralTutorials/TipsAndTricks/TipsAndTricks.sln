@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FBB4A1FB-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetOrAddConcurrentDictionary", "src\GetOrAddConcurrentDictionary\GetOrAddConcurrentDictionary.csproj", "{9240E263-AD96-4345-849A-58D1BCA04DF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalsVisibileToForTests", "src\InternalsVisibileToForTests\InternalsVisibileToForTests.csproj", "{1ACA13E4-5D77-4275-AC30-4E3CBCF6BEC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalsVisibleForTests", "src\InternalsVisibleForTests\InternalsVisibleForTests.csproj", "{1ACA13E4-5D77-4275-AC30-4E3CBCF6BEC7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettersAndAutoProperties", "src\GettersAndAutoProperties\GettersAndAutoProperties.csproj", "{0FB40D5B-0827-49BD-9E38-3243DC8AB051}"
 EndProject

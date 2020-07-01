@@ -16,15 +16,7 @@ namespace AnyCountAndLinq
     
     public class ToTest
     {
-        private List<Guid> List { get; } = new List<Guid>(Enumerable.Range(0, 10000).Select(x=> Guid.NewGuid()));
-
-        public IEnumerable<Guid> ListDate()
-        {
-            foreach (var item in List)
-            {
-                yield return item;
-            }
-        }
+        public List<Guid> List { get; } = new List<Guid>(Enumerable.Range(0, 10000).Select(x=> Guid.NewGuid()));
     }
     
     public class Bench
@@ -32,9 +24,9 @@ namespace AnyCountAndLinq
         private static readonly ToTest ToTest = new ToTest();
         
         [Benchmark]
-        public bool TestAny() => ToTest.ListDate().Any();
+        public bool TestAny() => ToTest.List.Any();
         
         [Benchmark]
-        public bool TestCount() => ToTest.ListDate().Count() > 0;
+        public bool TestCount() => ToTest.List.Count > 0;
     }
 }

@@ -1,12 +1,24 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace AsyncActionsAreNotAwaited
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            await SomeMethodThatAcceptsDelegate(async () =>
+            {
+                await Task.Delay(1000);
+                Console.WriteLine("Test");
+            });
+        }
+
+        private static async Task SomeMethodThatAcceptsDelegate(Action content)
+        {
+            await Task.Delay(1);
+            content();
         }
     }
 }
