@@ -15,10 +15,10 @@ namespace AsyncActionsAreNotAwaited
             });
         }
 
-        private static async Task SomeMethodThatAcceptsDelegate(Action content)
+        private static async Task SomeMethodThatAcceptsDelegate(Func<Task> content)
         {
             await Task.Delay(1);
-            content();
+            await content();
         }
     }
 }

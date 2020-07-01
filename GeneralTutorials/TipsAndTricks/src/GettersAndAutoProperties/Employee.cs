@@ -6,12 +6,13 @@ namespace GettersAndAutoProperties
         {
             FirstName = firstName;
             LastName = lastName;
+            FullName = $"{FirstName} {LastName}";
         }
         
         public string FirstName { get; }
 
         public string LastName { get; }
 
-        public string FullName => $"{FirstName} {LastName}";
+        public string FullName { get; }
     }
 }

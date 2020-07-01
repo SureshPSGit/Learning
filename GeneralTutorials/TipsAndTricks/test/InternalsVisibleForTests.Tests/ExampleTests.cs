@@ -1,3 +1,4 @@
+using FluentAssertions;
 using Xunit;
 
 namespace InternalsVisibleForTests.Tests
@@ -7,6 +8,8 @@ namespace InternalsVisibleForTests.Tests
         [Fact]
         public void IsNickCreatingYoutubeVideos_Should_ReturnTrue()
         {
+            var testClass = new ClassToTest();
+            testClass.IsNickCreatingYoutubeVideos().Should().BeTrue();
         }
     }
 }

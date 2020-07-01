@@ -8,26 +8,30 @@ namespace GetOrAddConcurrentDictionary
 {
     class Program
     {
-        static readonly ConcurrentDictionary<string, string> Dictionary = new ConcurrentDictionary<string, string>();
+        private static int _visitorCount = 0;
+        static readonly ConcurrentDictionary<string, Lazy<string>> Dictionary = new ConcurrentDictionary<string, Lazy<string>>();
         
         static async Task Main(string[] args)
         {
-            
             var firstCallTask = Task.Run(() => AddAndPrint("First call"));
             var secondCallTask = Task.Run(() => AddAndPrint("Second call"));
             
             await Task.WhenAll(firstCallTask, secondCallTask);
             
             AddAndPrint("Third call");
+            Console.WriteLine($"Called {_visitorCount} times");
         }
 
         private static void AddAndPrint(string callText)
         {
             var callValue = Dictionary.GetOrAdd("somekey", x =>
-            {
-                return callText;
-            });
-            Console.WriteLine(callValue);
+                new Lazy<string>(() =>
+                {
+                    Interlocked.Increment(ref _visitorCount);
+                    return callText;
+                })
+            );
+            Console.WriteLine(callValue.Value);
         }
     }
 }
