@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingOptionInsteadOfNull", "UsingOptionInsteadOfNull.csproj", "{807FCC0E-49D2-44C6-AF5B-906BE6A34453}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{807FCC0E-49D2-44C6-AF5B-906BE6A34453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{807FCC0E-49D2-44C6-AF5B-906BE6A34453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{807FCC0E-49D2-44C6-AF5B-906BE6A34453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{807FCC0E-49D2-44C6-AF5B-906BE6A34453}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
