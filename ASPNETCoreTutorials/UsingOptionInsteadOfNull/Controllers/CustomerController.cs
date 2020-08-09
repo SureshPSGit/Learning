@@ -17,7 +17,12 @@ namespace UsingOptionInsteadOfNull.Controllers
         [HttpGet("api/customers/{customerId}")]
         public IActionResult GetCustomer([FromRoute] string customerId)
         {
-            var customer = _customerService.Get(Guid.Parse(customerId));
+            if (!Guid.TryParse(customerId, out var customerIdGuid))
+            {
+                return NotFound();
+            }
+
+            var customer = _customerService.Get(customerIdGuid);
 
             if (customer == null)
             {
