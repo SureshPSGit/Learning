@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using LanguageExt;
 
 namespace UsingOptionInsteadOfNull.Services
 {
     public interface ICustomerService
     {
-        Customer Get(Guid customerId);
+        Option<Customer> Get(Guid customerId);
 
         IEnumerable<Customer> GetAll();
 

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using LanguageExt;
+using LanguageExt.SomeHelp;
 
 namespace UsingOptionInsteadOfNull.Repositories
 {
@@ -15,10 +17,10 @@ namespace UsingOptionInsteadOfNull.Repositories
             }}
         });
 
-        public Customer Get(Guid customerId)
+        public Option<Customer> Get(Guid customerId)
         {
             var found = _customers.TryGetValue(customerId, out var customer);
-            return found ? customer : null;
+            return found ? customer.ToSome() : Option<Customer>.None;
         }
 
         public IEnumerable<Customer> GetAll()

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LanguageExt;
 using UsingOptionInsteadOfNull.Repositories;
 
 namespace UsingOptionInsteadOfNull.Services
@@ -13,7 +14,7 @@ namespace UsingOptionInsteadOfNull.Services
             _customerRepository = customerRepository;
         }
 
-        public Customer Get(Guid customerId)
+        public Option<Customer> Get(Guid customerId)
         {
             // Business logic stuff here
 

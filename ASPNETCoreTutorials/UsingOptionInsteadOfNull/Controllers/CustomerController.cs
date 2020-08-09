@@ -1,4 +1,5 @@
 using System;
+using LanguageExt.UnsafeValueAccess;
 using Microsoft.AspNetCore.Mvc;
 using UsingOptionInsteadOfNull.Services;
 
@@ -22,14 +23,8 @@ namespace UsingOptionInsteadOfNull.Controllers
                 return NotFound();
             }
 
-            var customer = _customerService.Get(customerIdGuid);
-
-            if (customer == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(customer);
+            var customerOption = _customerService.Get(customerIdGuid);
+            return customerOption.Match<IActionResult>(Ok, NotFound);
         }
 
         [HttpGet("api/customers")]
