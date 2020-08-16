@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OneOfTutorial.WithExceptions.Filters;
+using OneOfTutorial.WithExceptions.Services;
 
 namespace OneOfTutorial.WithExceptions
 {
@@ -18,7 +20,8 @@ namespace OneOfTutorial.WithExceptions
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddSingleton<IUserService, UserService>();
+            services.AddControllers(options => options.Filters.Add(new BadRequestExceptionFilter()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
