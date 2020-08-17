@@ -2,6 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using OneOf;
 using OneOfTutorial.WithOneOf.Models;
 
 namespace OneOfTutorial.WithOneOf.Services
@@ -18,18 +19,18 @@ namespace OneOfTutorial.WithOneOf.Services
             }}
         });
 
-        public object CreateUser(User user)
+        public OneOf<User, InvalidEmail, EmailAlreadyExists> CreateUser(User user)
         {
             if (!RegexUtilities.IsValidEmail(user.Email))
             {
-                return new object();
+                return new InvalidEmail();
             }
 
             var existingEmails = _users.Values.Select(x => x.Email.Normalize());
 
             if (existingEmails.Contains(user.Email.Normalize()))
             {
-                return new object();
+                return new EmailAlreadyExists();
             }
 
             _users.TryAdd(user.Id, user);

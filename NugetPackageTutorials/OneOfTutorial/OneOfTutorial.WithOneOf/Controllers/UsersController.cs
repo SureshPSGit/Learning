@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OneOf;
 using OneOfTutorial.WithOneOf.Models;
 using OneOfTutorial.WithOneOf.Requests;
 using OneOfTutorial.WithOneOf.Services;
@@ -28,7 +29,9 @@ namespace OneOfTutorial.WithOneOf.Controllers
 
             var userOneOf = _userService.CreateUser(userToCreate);
 
-            return (IActionResult) new object();
+            return userOneOf.Match<IActionResult>(Ok,
+                email => BadRequest(Errors.NotValidEmail),
+                exists => BadRequest(Errors.EmailAlreadyExistsError));
         }
 
         [HttpGet("users/{userId}")]
