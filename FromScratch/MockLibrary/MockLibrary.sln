@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockLibrary", "MockLibrary\MockLibrary.csproj", "{115E31FE-A62F-4AAB-8712-1E1C3DBA7945}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockLibrary.Test", "MockLibrary.Test\MockLibrary.Test.csproj", "{1C35D8FA-092F-4B84-AB76-A3A5C54AA382}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{115E31FE-A62F-4AAB-8712-1E1C3DBA7945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{115E31FE-A62F-4AAB-8712-1E1C3DBA7945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{115E31FE-A62F-4AAB-8712-1E1C3DBA7945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{115E31FE-A62F-4AAB-8712-1E1C3DBA7945}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C35D8FA-092F-4B84-AB76-A3A5C54AA382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C35D8FA-092F-4B84-AB76-A3A5C54AA382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C35D8FA-092F-4B84-AB76-A3A5C54AA382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C35D8FA-092F-4B84-AB76-A3A5C54AA382}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
